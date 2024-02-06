@@ -1,0 +1,61 @@
+\documentclass[letterpaper,10.5pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    frame=tb,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    rulecolor=\color{black},
+}
+
+\lstdefinestyle{pywoc1}{%
+    language     = python,
+    morecomment  = [l][\nullfont]{\#},
+    emptylines   = *1,
+}
+
+\lstdefinestyle{pywoc2}{%
+    language     = python,
+    morecomment  = [is]{\#}{\^^M},
+    emptylines   = *1,
+}
+
+\lstdefinestyle{pywoc3}{%
+    language     = python,
+    morecomment  = [il]{\#},
+    emptylines   = *1,
+}
+
+\begin{document}
+\section{Approach 1}
+\lstinputlisting[%
+    language=Python,
+    style=pywoc1,
+    caption={A caption},
+    label={lst:pyproach1},
+]{mwe.py}
+
+\section{Approach 2}
+\lstinputlisting[%
+    language=Python,
+    style=pywoc2,
+    caption={A caption},
+    label={lst:pyproach1},
+]{mwe.py}
+
+\section{Approach 3}
+\lstinputlisting[%
+    language=Python,
+    style=pywoc3,
+    caption={A caption},
+    label={lst:pyproach1},
+]{mwe.py}
+
+
+\end{document}
