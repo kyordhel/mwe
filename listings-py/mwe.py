@@ -8,4 +8,11 @@ def foo():
     # Another line that does nothing
     while True:
         sleep(1)
+    # The following three lines explain
+    # what the next for does. Which is
+    #basically nothing because it passes
+    for i in range(100):
+        # Another line that should not print
+        pass # And an unnecessary explanation
+
 #end def
