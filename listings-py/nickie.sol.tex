@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fullpage}
+\usepackage{xcolor}
+\usepackage{listings}
+
+% Default settings.
+\lstset{
+  basicstyle=\ttfamily,
+  frame=tb,
+  numbers=left,
+  numbersep=5pt,
+  numberstyle=\tiny\color{gray},
+  rulecolor=\color{black},
+}
+
+% The \incomment macro and auxiliary stuff.
+\newif\ifnocomment
+\newif\ifemptyline
+\makeatletter
+% When a line starts, it's empty and we're not in a comment.
+\lst@AddToHook{InitVarsBOL}{\global\emptylinetrue\global\nocommenttrue}
+% When something is printed, the line is not empty.
+\lst@AddToHook{OutputBox}{\global\emptylinefalse}
+% When we're in a comment...
+\def\incomment#1{%
+  % if we just entered...
+  \ifnocomment%
+    \global\nocommentfalse%
+    % and the line is empty, then remove this line.
+    \ifemptyline\global\advance\lst@newlines\m@ne\fi%
+  \fi}
+\makeatother
+
+
+
+\lstdefinestyle{pywocNullFont}{%
+    language     = python,
+    morecomment  = [l][\nullfont]{\#},
+    emptylines   = *1,
+}
+
+\lstdefinestyle{pywocInComment}{%
+    language     = python,
+    morecomment  = [l][\incomment]{\#},
+    emptylines   = *1,
+}
+
+
+
+
+\begin{document}
+\section{Nickie's solution}
+\lstinputlisting[%
+    language=Python,
+    style=pywocInComment,
+    caption={A caption},
+    label={lst:pyproach1},
+]{mwe.py}
+
+\section{Approach: \texttt{\textbackslash{}nullfont}}
+\lstinputlisting[%
+    language=Python,
+    style=pywocNullFont,
+    caption={A caption},
+    label={lst:pyproach1},
+]{mwe.py}
+
+
+\end{document}
